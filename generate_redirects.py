@@ -31,18 +31,17 @@ for _, row in df.iterrows():
     <!DOCTYPE html>
     <html>
       <head>
+      <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VSQZKE4MSS"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){{dataLayer.push(arguments);}}
+        gtag('js', new Date());
+
+        gtag('config', 'G-VSQZKE4MSS');
+        </script>
         <!-- Redirect -->
         <meta http-equiv="refresh" content="1; URL='{target_url}'" />
-        <!-- Google Analytics (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id={google_measurement_id}"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){{dataLayer.push(arguments);}}
-          gtag('js', new Date());
-          gtag('config', '{google_measurement_id}', {{
-            'page_path': '/redirect_files/{file_name}'
-          }});
-        </script>
       </head>
       <body>
         <h1>Redirecting...</h1>
