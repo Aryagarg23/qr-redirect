@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VSQZKE4MSS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-VSQZKE4MSS');
+
+        // Function to get query parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Redirect logic
+        document.addEventListener("DOMContentLoaded", () => {
+            const id = getQueryParam("id"); // Get the 'id' parameter from the URL
+
+            // Map of IDs to target URLs
+            const redirectMap = {'913168816': 'https://www.tandfonline.com/doi/full/10.1080/17457289.2023.2214734#abstract', '913168338': 'https://www.pewresearch.org/journalism/2024/06/12/how-americans-get-news-on-tiktok-x-facebook-and-instagram/', '913168311': 'https://researchinginternaldisplacement.org/short_pieces/planned-relocations-what-we-know-dont-know-and-need-to-learn/', '913168280': 'https://www.nature.com/articles/d41586-024-00993-x', '913168190': 'https://investors.zillowgroup.com/investors/news-and-events/news/news-details/2024/Zillow-introduces-First-Streets-comprehensive-climate-risk-data-on-for-sale-listings-across-the-US/default.aspx', '913168164': 'https://www.nytimes.com/2024/10/15/climate/florida-climate-resilience-babcock-ranch.html', '913168143': 'https://iadns.onlinelibrary.wiley.com/doi/full/10.1002/fpf2.12022', '913168122': 'https://www.globenewswire.com/news-release/2024/03/18/2847644/28124/en/Culinary-Tourism-Market-Analysis-Report-2024-Increasing-Impact-of-Social-Media-on-Shaping-Travel-Behaviors-Global-Forecasts-to-2032.html', '913168102': 'https://www.wsj.com/articles/electric-cars-emit-more-soot-california-ban-gas-powered-vehicles-521b29e3', '913168079': 'https://www.weforum.org/stories/2022/11/solar-farms-in-space-electricity-to-earth-energy-climate-change/', '913167940': 'https://www.weforum.org/stories/2024/05/how-wind-energy-is-reshaping-the-future-of-global-power-and-politics/', '913167895': 'https://globalventuring.com/corporate/investment/energy-companies-investors-startups/#:~:text=The%20tech%20industry%20has%20been,sector%20could%20double%20by%202026.', '913167860': 'https://www.datacenterdynamics.com/en/analysis/us-grid-power-crunch/'};
+
+            if (id && redirectMap[id]) {
+                const targetUrl = redirectMap[id];
+
+                // Log the pageview to Google Analytics with the ID
+                gtag('event', 'redirect', {
+                    'event_category': 'QR Redirect',
+                    'event_label': id,
+                    'value': 1
+                });
+
+                // Redirect to the target URL
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 1000); // Add a 1-second delay to ensure the analytics event is logged
+            } else {
+                // If no valid ID is provided, show an error message
+                document.body.innerHTML = "<h1>Invalid or Missing ID</h1><p>Please use a valid QR code link.</p>";
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+    <p>If you are not redirected automatically, please check the link or contact support.</p>
+</body>
+</html>
