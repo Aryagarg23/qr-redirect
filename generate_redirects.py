@@ -13,8 +13,8 @@ if 'url' not in df.columns or 'id' not in df.columns:
 output_dir = "redirect_files"
 os.makedirs(output_dir, exist_ok=True)
 
-# Google Analytics Tracking ID (replace with your actual ID)
-google_analytics_id = "UA-XXXXXXXXX-X"
+# Google Analytics Measurement ID (replace with your actual Measurement ID)
+google_measurement_id = "G-VSQZKE4MSS"  # Replace with your Google Analytics Measurement ID
 
 # Generate redirect HTML files
 for _, row in df.iterrows():
@@ -26,20 +26,21 @@ for _, row in df.iterrows():
     file_name = f"{article_id}.html"
     file_path = os.path.join(output_dir, file_name)
 
-    # HTML content with redirection and Google Analytics
+    # HTML content with redirection and Google Analytics (gtag.js)
     html_content = f"""
     <!DOCTYPE html>
     <html>
       <head>
         <meta http-equiv="refresh" content="0; URL='{target_url}'" />
+        <!-- Google Analytics (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={google_measurement_id}"></script>
         <script>
-          (function(i,s,o,g,r,a,m){{i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){{
-          (i[r].q=i[r].q||[]).push(arguments)}},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          }})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-          ga('create', '{google_analytics_id}', 'auto');  // Replace with your Google Analytics ID
-          ga('send', 'pageview', '/{file_name}');
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){{dataLayer.push(arguments);}}
+          gtag('js', new Date());
+          gtag('config', '{google_measurement_id}', {{
+            'page_path': '/redirect_files/{file_name}'
+          }});
         </script>
       </head>
       <body>
