@@ -29,7 +29,8 @@
                 const targetUrl = redirectMap[id];
 
                 // Log the pageview to Google Analytics with the ID
-                gtag('event', 'redirect', {
+                // Log the event in Google Analytics 4
+                gtag('event', 'redirect_click', {
                     'event_category': 'QR Redirect',
                     'event_label': id,
                     'value': 1
