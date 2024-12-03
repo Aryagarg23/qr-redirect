@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 # Load the CSV file
-csv_file = "Final_LIs_for_F24.csv"
+csv_file = "Final_LIs_for_F24.csv"  # Replace with your CSV file
 df = pd.read_csv(csv_file)
 
 # Ensure the necessary columns exist
@@ -31,7 +31,8 @@ for _, row in df.iterrows():
     <!DOCTYPE html>
     <html>
       <head>
-        <meta http-equiv="refresh" content="0; URL='{target_url}'" />
+        <!-- Redirect -->
+        <meta http-equiv="refresh" content="1; URL='{target_url}'" />
         <!-- Google Analytics (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id={google_measurement_id}"></script>
         <script>
@@ -44,7 +45,8 @@ for _, row in df.iterrows():
         </script>
       </head>
       <body>
-        <p>Redirecting to <a href="{target_url}">{target_url}</a>...</p>
+        <h1>Redirecting...</h1>
+        <p>If you are not redirected automatically, click <a href="{target_url}">here</a>.</p>
       </body>
     </html>
     """
